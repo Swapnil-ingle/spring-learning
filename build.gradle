@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+jar {
+	baseName = 'spring-tut.jar'
+	version = '0.1.0'
+}
+
+repositories {
+	mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile group: 'org.springframework', name: 'spring-web', version: '5.0.1.RELEASE'
+}
