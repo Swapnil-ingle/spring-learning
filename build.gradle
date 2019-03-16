@@ -3,7 +3,7 @@ apply plugin: 'application'
 apply plugin: 'eclipse'
 
 jar {
-	baseName = 'spring-tut.jar'
+	baseName = 'spring-tut'
 	version = '0.1.0'
 }
 
