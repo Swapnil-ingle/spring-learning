@@ -7,8 +7,8 @@ import com.coach.app.coach.impl.SwimCoach;
 public class AppDriver {
 	public static void main(String[] args) {
 		// Create object
-		Coach theCoach = new SwimCoach();
+		//Coach theCoach = new SwimCoach();
 		// Use object
-		System.out.println(theCoach.getDailyWorkout());
+		//System.out.println(theCoach.getDailyWorkout());
 	}
 }
