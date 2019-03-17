@@ -11,10 +11,10 @@ public class SwimCoach implements Coach {
 	private FortuneService fortuneSvc;
 	
 	@Autowired
-	public SwimCoach(FortuneService fortuneSvc) {
+	public void setFortuneSvc(FortuneService fortuneSvc) {
 		this.fortuneSvc = fortuneSvc;
 	}
-
+	
 	@Override
 	public String getDailyWorkout() {
 		return "Do a 200m freestyle dash";
