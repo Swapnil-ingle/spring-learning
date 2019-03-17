@@ -20,13 +20,15 @@
     <bean id="coach" class="com.coach.app.coach.impl.GymCoach">
     	<property name="fortuneSvc" ref="myFortuneSvc"/>
     	<!-- Inject literal values -->
-    	<property name="name" value="Ganesh Sir"/>
-    	<property name="eMailAddress" value="GaneshGymFree@gmail.com"/>
+    	<property name="name" value="${coach.name}"/>
+    	<property name="eMailAddress" value="${coach.email}"/>
     </bean>
     
     <bean id="myLoggerConfig" class="com.coach.app.logger.MyLoggerConfig" init-method="initLogger">
     	<property name="rootLoggerLevel" value="FINE"/>
     	<property name="printedLoggerLevel" value="FINE"/>
     </bean>
+    
+    <context:property-placeholder location="classpath:sports.properties"/>
     
 </beans>
