@@ -4,9 +4,9 @@ import com.coach.app.coach.Coach;
 import com.coach.app.service.FortuneService;
 
 public class SwimCoach implements Coach {
-private FortuneService fortuneSvc;
+	private FortuneService fortuneSvc;
 	
-	public SwimCoach(FortuneService fortuneSvc) {
+	public void setFortuneSvc(FortuneService fortuneSvc) {
 		this.fortuneSvc = fortuneSvc;
 	}
 
@@ -17,7 +17,7 @@ private FortuneService fortuneSvc;
 
 	@Override
 	public String getDailyFortune() {
-		return fortuneSvc.getFortune();
+		return "Swim fortune: " + fortuneSvc.getFortune();
 	}
 
 }

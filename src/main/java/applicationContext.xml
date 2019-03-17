@@ -11,8 +11,14 @@
     	
     </bean>
     
-    <bean id="coach" class="com.coach.app.coach.impl.SwimCoach">
+    <!-- Constructor injection -->
+    <!-- <bean id="coach" class="com.coach.app.coach.impl.SwimCoach">
     	<constructor-arg ref="myFortuneSvc"/>
+    </bean> -->
+    
+    <!-- Setter injection -->
+    <bean id="coach" class="com.coach.app.coach.impl.SwimCoach">
+    	<property name="fortuneSvc" ref="myFortuneSvc"/>
     </bean>
     
     <bean id="myLoggerConfig" class="com.coach.app.logger.MyLoggerConfig" init-method="initLogger">

@@ -6,10 +6,10 @@ import com.coach.app.service.FortuneService;
 public class GymCoach implements Coach {
 	private FortuneService fortuneSvc;
 	
-	public GymCoach(FortuneService fortuneSvc) {
+	public void setFortuneSvc(FortuneService fortuneSvc) {
 		this.fortuneSvc = fortuneSvc;
 	}
-	
+
 	@Override
 	public String getDailyWorkout() {
 		return "Bench press 100Kgs";
