@@ -2,8 +2,11 @@ package com.coach.app.service.impl;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.springframework.stereotype.Component;
+
 import com.coach.app.service.FortuneService;
 
+@Component
 public class RandomFortuneService implements FortuneService {
 	private static final String[] fortunes = {
 			"Today you're going to have a very good day", 
