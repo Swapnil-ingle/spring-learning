@@ -17,8 +17,11 @@
     </bean> -->
     
     <!-- Setter injection -->
-    <bean id="coach" class="com.coach.app.coach.impl.SwimCoach">
+    <bean id="coach" class="com.coach.app.coach.impl.GymCoach">
     	<property name="fortuneSvc" ref="myFortuneSvc"/>
+    	<!-- Inject literal values -->
+    	<property name="name" value="Ganesh Sir"/>
+    	<property name="eMailAddress" value="GaneshGymFree@gmail.com"/>
     </bean>
     
     <bean id="myLoggerConfig" class="com.coach.app.logger.MyLoggerConfig" init-method="initLogger">
