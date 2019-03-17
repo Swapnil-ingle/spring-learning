@@ -7,7 +7,7 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <bean id="myFortuneSvc" class="com.coach.app.service.impl.CoachFortuneService">
+    <bean id="myFortuneSvc" class="com.coach.app.service.impl.RandomFortuneService">
     	
     </bean>
     
