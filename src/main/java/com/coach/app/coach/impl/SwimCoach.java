@@ -8,12 +8,8 @@ import com.coach.app.service.FortuneService;
 
 @Component
 public class SwimCoach implements Coach {
-	private FortuneService fortuneSvc;
-	
 	@Autowired
-	public void setFortuneSvc(FortuneService fortuneSvc) {
-		this.fortuneSvc = fortuneSvc;
-	}
+	private FortuneService fortuneSvc;
 	
 	@Override
 	public String getDailyWorkout() {
