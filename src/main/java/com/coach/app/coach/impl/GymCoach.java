@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import com.coach.app.coach.Coach;
 import com.coach.app.service.FortuneService;
 
-@Component
+//@Component
 public class GymCoach implements Coach {
-	@Autowired
+//	@Autowired
 	private FortuneService fortuneSvc;
 	
 	@Override
