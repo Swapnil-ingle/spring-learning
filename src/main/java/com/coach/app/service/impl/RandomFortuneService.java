@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import com.coach.app.service.FortuneService;
 
+@Lazy
 @Component
 public class RandomFortuneService implements FortuneService {
 	@Value("${fortunes.file.path}")
@@ -19,7 +23,8 @@ public class RandomFortuneService implements FortuneService {
 
 	private List<String> fortunes;
 
-	public String loadRandomFortunes() {
+	@PostConstruct
+	public void loadRandomFortunes() {
 		try {
 			File input = new File(fortuneFilePath);
 			BufferedReader reader = new BufferedReader(new FileReader(input));
@@ -32,12 +37,11 @@ public class RandomFortuneService implements FortuneService {
 		} catch (Exception e) {
 			System.out.println("Error while reading from fortune file: " + e.getLocalizedMessage());
 		}
-		return getSingleRandomFortune();
 	}
 
 	@Override
 	public String getFortune() {
-		return fortunes != null ? getSingleRandomFortune() : loadRandomFortunes();
+		return fortunes != null ? getSingleRandomFortune() : null;
 	}
 
 	private String getSingleRandomFortune() {
