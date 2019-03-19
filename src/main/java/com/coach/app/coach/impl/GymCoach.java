@@ -1,38 +1,22 @@
 package com.coach.app.coach.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.coach.app.coach.Coach;
 import com.coach.app.service.FortuneService;
 
-public class GymCoach {
+@Component
+public class GymCoach implements Coach {
+	@Autowired
 	private FortuneService fortuneSvc;
 	
-	private String name;
-	
-	private String eMailAddress;
-	
-	public void setFortuneSvc(FortuneService fortuneSvc) {
-		this.fortuneSvc = fortuneSvc;
-	}
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String geteMailAddress() {
-		return eMailAddress;
-	}
-
-	public void seteMailAddress(String eMailAddress) {
-		this.eMailAddress = eMailAddress;
-	}
-
+	@Override
 	public String getDailyWorkout() {
 		return "Bench press 100Kgs";
 	}
 	
+	@Override
 	public String getDailyFortune() {
 		return fortuneSvc.getFortune();
 	}
