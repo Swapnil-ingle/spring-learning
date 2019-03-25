@@ -21,5 +21,7 @@ dependencies {
 	compile group: 'commons-logging', name: 'commons-logging', version: '1.2'
 	compile group: 'org.springframework', name: 'spring-webmvc', version: '3.0.5.RELEASE'
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.12'
+	compile group: 'org.hibernate', name: 'hibernate-agroal', version: '5.4.2.Final'
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
         runtime group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.12'
 }
