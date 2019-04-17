@@ -1,13 +1,16 @@
 package com.hibernate.learn.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="patients")
-public class Patient {
+@Table(name="instructors")
+public class Instructor {
 	@Id
 	@Column(name="Identifier")
 	private int identifier;
@@ -27,11 +30,15 @@ public class Patient {
 	@Column(name="Email")
 	private String email;
 	
-	public Patient() {
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="instructor_detail_id")
+	private InstructorDetail instructorDetail;
+	
+	public Instructor() {
 	
 	}
 
-	public Patient(String name, String address, String city, int contactNumber, String email) {
+	public Instructor(String name, String address, String city, int contactNumber, String email) {
 		this.name = name;
 		this.address = address;
 		this.city = city;
@@ -86,11 +93,21 @@ public class Patient {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public InstructorDetail getInstructorDetail() {
+		return instructorDetail;
+	}
+
+	public void setInstructorDetail(InstructorDetail instructorDetail) {
+		this.instructorDetail = instructorDetail;
+	}
 
 	@Override
 	public String toString() {
-		return "Patient [identifier=" + identifier + ", name=" + name + ", address=" + address + ", city=" + city
-				+ ", contactNumber=" + contactNumber + ", email=" + email + "]";
+		return "Instructor [identifier=" + identifier + ", name=" + name + ", address=" + address + ", city=" + city
+				+ ", contactNumber=" + contactNumber + ", email=" + email 
+				+ "instructorDetail= " + getInstructorDetail().toString()
+				+ "]";
 	}
 	
 }
