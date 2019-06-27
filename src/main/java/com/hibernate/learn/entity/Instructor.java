@@ -1,18 +1,26 @@
 package com.hibernate.learn.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="instructors")
+@Table(name="instructor")
 public class Instructor {
 	@Id
-	@Column(name="Identifier")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int identifier;
 	
 	@Column(name="Name")
@@ -30,9 +38,15 @@ public class Instructor {
 	@Column(name="Email")
 	private String email;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="instructor_detail_id")
 	private InstructorDetail instructorDetail;
+	
+	@OneToMany(fetch=FetchType.LAZY,
+				mappedBy="instructor", 
+				cascade= {CascadeType.DETACH, CascadeType.MERGE,
+						CascadeType.PERSIST, CascadeType.REFRESH})
+	private List<Course> courses;
 	
 	public Instructor() {
 	
@@ -101,13 +115,27 @@ public class Instructor {
 	public void setInstructorDetail(InstructorDetail instructorDetail) {
 		this.instructorDetail = instructorDetail;
 	}
+	
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
+	public void add(Course course) {
+		if (courses == null) {
+			courses = new ArrayList<>();
+		}
+		
+		courses.add(course);
+		course.setInstructor(this);
+	}
 
 	@Override
 	public String toString() {
 		return "Instructor [identifier=" + identifier + ", name=" + name + ", address=" + address + ", city=" + city
-				+ ", contactNumber=" + contactNumber + ", email=" + email 
-				+ "instructorDetail= " + getInstructorDetail().toString()
-				+ "]";
+				+ ", contactNumber=" + contactNumber + ", email=" + email + "]";
 	}
-	
 }

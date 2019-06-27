@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="instructor_detail")
+@Table(name="instructor_details")
 public class InstructorDetail {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="identifier")
+	@Column(name="id")
 	private int identifier;
 	
 	@Column(name="youtube_channel")
@@ -56,6 +56,7 @@ public class InstructorDetail {
 
 	@Override
 	public String toString() {
-		return "InstructorDetail [identifier=" + identifier + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
+		return "InstructorDetail [identifier=" + identifier + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby
+				+ "]";
 	}
 }
